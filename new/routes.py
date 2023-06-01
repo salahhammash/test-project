@@ -2,7 +2,7 @@ from flask import render_template, url_for, flash, redirect
 from new.forms import RegistrationForm,LoginForm
 from new.models import User
 from new import app,bcrypt,db 
-from flask_login import login_user
+from flask_login import login_user,current_use,logout_user
 
 about_us = [
     {
@@ -49,6 +49,10 @@ def about():
 @app.route("/register", methods=["GET", "POST"])
 #this methods accsept GEt request & POST request
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for("home"))
+    # this is mean that if the user is logged in go to home page directly
+    
     form = RegistrationForm()
     # we created an instence from RegistrationForm()
     if form.validate_on_submit():
@@ -69,6 +73,9 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("home"))
+    # this is mean that if the user is logged in go to home page directly
     form = LoginForm()
     if form.validate_on_submit():
         # i will put an dumy data cuze we dont have a data base
@@ -89,3 +96,7 @@ def login():
 
 
          
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
