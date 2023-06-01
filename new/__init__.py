@@ -2,7 +2,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-from new import routes
 
 
 
@@ -23,3 +22,4 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pythonic.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 db = SQLAlchemy(app)
 
+from new import routes
