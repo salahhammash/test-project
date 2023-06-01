@@ -1,0 +1,33 @@
+{%extends "layout.html"%}
+{% block content%}
+    
+    <section class="bg-ligh">
+        <div class="container p-5">
+            <h3 class="text-center text-secondary" id='about'>about us</h3>
+            
+            <div class="row">
+                {% for i in about_us %}
+                <div class="col-sm-12 col-md-6 col-lg-4 p-3 d-flex align-items-stretch">
+                    <div class="card" style="width: 18rem;">
+                      
+                      
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{i.name}}</h5>
+                          <img src="{{i.icon}}" class="card-img-top" alt="...">
+                        <p>{{i.description}}</p>
+                          <a href="#" class="text-white p-2"><i class="bi-github"></i></a>
+                          <a href="#" class="text-white p-2"><i class="bi-instagram"></i></a>
+                        </div>
+                      </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+                    
+                        
+                          
+
+{% endblock content %}
+
